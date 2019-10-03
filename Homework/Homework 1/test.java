@@ -21,13 +21,13 @@ class test extends JFrame {
  public static void main(String[] args) 
  { 
      // create a new frame to stor text field and button 
-     f = new JFrame("panel"); 
+     f = new JFrame("HW1 GUI"); 
      mainPanel = new JPanel();
      mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
 
      // create a new buttons 
-     b = new JButton("button1"); 
-     b1 = new JButton("button2");
+     b = new JButton("Circle"); 
+     b1 = new JButton("Box");
 
      // create a panel to add buttons 
      JPanel p1 = new JPanel(); 
