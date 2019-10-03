@@ -1,5 +1,6 @@
 import java.awt.Color;
-
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,21 +33,18 @@ class test extends JFrame {
      JPanel p1 = new JPanel(); 
      p1.setLayout(new BoxLayout(p1, BoxLayout.Y_AXIS));
      p1.setBackground(Color.DARK_GRAY);
+     
      JPanel p2 = new JPanel();
-     p2.setLayout(new BoxLayout(p2, BoxLayout.Y_AXIS));
-     p2.setBackground(Color.red); 
+     p2.setBackground(Color.white); 
 
      // add buttons and textfield to panel 
-     p1.add(b); 
-     p1.add(b1); 
-
-     // setbackground of panel 
+     p1.add(b,BorderLayout.WEST); 
+     p1.add(b1,BorderLayout.WEST); 
 
      // add panel to frame 
-     mainPanel.add(p1); 
-     mainPanel.add(p2); 
-     
-     f.add(mainPanel);
+     f.add(p1,BorderLayout.WEST);
+     f.add(p2,BorderLayout.CENTER);
+
      // set the size of frame 
      f.setSize(1500, 1500); 
      f.setVisible(true);
