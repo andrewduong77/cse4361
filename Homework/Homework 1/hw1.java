@@ -75,7 +75,7 @@ class JPanelDraw extends JPanel
         });
     }
 }
-class test
+class hw1
 { 
     // private static final long serialVersionUID = 1L;
     
