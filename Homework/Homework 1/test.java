@@ -8,12 +8,43 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel; 
 
-class test extends JFrame { 
+interface shape
+{
+    public void Draw(Graphics2D graphics);
+}
+class Circle implements shape
+{
+    private int x, y;
+    public Circle(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
+public void Draw(Graphics2D g)
+{
+    g.drawOval(x, y, 50, 50);
+}
+class Square implements shape
+{
+    private int x, y;
+    public Square(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+    public void Draw(Graphics2D g)
+    {
+        g.drawRect(x, y, 50, 50);
+    }
+}
 
+class test extends JPanel
+{ 
     private static final long serialVersionUID = 1L;
-
     // main class 
-    public static void main(String[] args) { 
+    public static void main(String[] args)
+    { 
         // create a new frame to stor text field and button 
         JFrame frame = new JFrame("HW1 GUI");
 
@@ -42,15 +73,25 @@ class test extends JFrame {
         frame.setSize(600, 400); 
         frame.setVisible(true);
 
-        buttonCircle.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
+        buttonCircle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 
             }
         });
-        buttonBox.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
+        buttonBox.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
             
             }
         });
     }
+    // public void paintComponent(Graphics g)
+    // {
+    //     super.paintComponent(g);
+    //     g.setColor(Color.RED);
+    //     g.drawRect(30, 30, 30, 30);
+    // }
 } 
