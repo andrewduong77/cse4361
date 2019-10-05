@@ -49,7 +49,41 @@ class Box implements shape
         g.drawRect(x, y, 75, 75);
     }
 }
-
+class JPanelDraw extends JPanel
+{
+//    private ArrayList<shape> points = new ArrayList<shape>();
+//    public String figure = "";
+    @Override
+    public void paintComponent(Graphics g)
+    {
+//        super.paintComponent(g);
+//        Graphics2D g2 = (Graphics2D) g;
+//        for(shape point : points)
+//        {
+//            point.Draw(g2);
+//        }
+    }
+    public JPanelDraw()
+    {
+        addMouseListener(new MouseAdapter()
+        {
+//            public void mousePressed(MouseEvent e)
+//            {
+//                if(figure.equals("circle"))
+//                {
+//                    Circle c = new Circle(e.getX(), e.getY());
+//                    System.out.println("Circle");
+//                }
+//                if(figure.equals("box"))
+//                {
+//                    Box s =new Box(e.getX(), e.getY());
+//                    System.out.println("Box");
+//                }
+//                repaint();
+//            }
+        });
+    }
+}
 class Model
 {
     private ArrayList<Point> points;
@@ -115,18 +149,36 @@ class View extends JFrame
         buttonBox.addActionListener(controller.actionListenerBox);
     }
 }
-class Controller
+class Controller extends JPanel
 {
     private Model model = new Model();
     public Controller(Model model)
     {
         this.model = model;
+        addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+                if(model.flag.equals("circle"))
+                {
+                    Circle c = new Circle(e.getX(), e.getY());
+                    System.out.println("Drawing Circle");
+                }
+                if(model.flag.equals("box"))
+                {
+                    Box s = new Box(e.getX(), e.getY());
+                    System.out.println("Drawing Box");
+                }
+                repaint();
+            }
+        });
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
         public void actionPerformed(ActionEvent e)
         {
             Model.flag = "circle";
+            System.out.println("flag set to circle");
         }
     };
     public static ActionListener actionListenerBox = new ActionListener()
@@ -134,12 +186,16 @@ class Controller
         public void actionPerformed(ActionEvent e)
         {
             Model.flag = "box";
+            System.out.println("flag set to box");
         }
     };
-}
-class JPanelDraw extends JPanel
-{
-    
+//    public static MouseAdapter mouseAdapterDraw = new MouseAdapter()
+//    {
+//        public void mousePressed(MouseEvent e)
+//        {
+//
+//        }
+//    };
 }
 class Hw1
 {
