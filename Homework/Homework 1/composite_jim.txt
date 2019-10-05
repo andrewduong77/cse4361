@@ -1,0 +1,134 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package hw01;
+
+import java.awt.event.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+import javax.swing.*;
+import java.io.*;
+
+
+interface shape
+{
+      public void Draw(Graphics2D graphics);
+}
+
+
+class Circle implements shape
+{
+    
+    private int x;
+    private int y;
+    public Circle(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+  public void Draw(Graphics2D graphics)
+  {
+    graphics.drawOval(x, y, 50, 50);
+
+  }
+}
+class Square implements shape
+{
+  private int x;
+  private int y;
+  public Square(int x, int y)
+  {
+  this.x = x;
+  this.y = y;
+  }
+  public void Draw(Graphics2D graphics)
+  {
+    graphics.drawRect(x, y, 50, 50);
+  } 
+}
+class DPanel extends JPanel
+{
+   private ArrayList<shape> points = new ArrayList<shape>();
+   public String figure = "";
+  @Override
+  public void paintComponent(Graphics g)
+  {
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D) g;
+      for (shape point : points)
+      {
+        point.Draw(g2);
+      }
+  }
+  
+  public DPanel()
+    {    
+
+    addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+            if(figure.equals("circle"))
+            {
+              Circle c = new Circle(e.getX(), e.getY());  
+              points.add(c);
+              System.out.println("Circle");
+            }
+            if(figure.equals("square"))
+            {
+              Square s = new Square(e.getX(), e.getY());
+              points.add(s);
+              System.out.println("Square");
+            }
+             repaint();
+            }
+        });
+    }
+}
+
+public class Hw01
+{
+
+
+  public static void main(String[] args)
+  {
+    JFrame frame = new JFrame("Hw 1");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    DPanel panel2 = new DPanel();
+    JPanel panel = new JPanel();
+    panel.setBounds(0,0,100,500);
+
+
+    JButton CButton = new JButton("Circle");
+    JButton SButton = new JButton("Square");
+
+    CButton.setBounds(0,0,400,400);
+    SButton.setBounds(0,400,400,400);
+
+    panel.add(CButton);
+    panel.add(SButton);
+    panel.setBackground(Color.gray);
+    panel.setLayout(new FlowLayout());
+//    frame.setLayout(null);
+    panel2.setBackground(Color.red);
+    
+    CButton.addActionListener((ActionEvent e) -> {
+        panel2.figure = "circle";
+    });
+    
+    SButton.addActionListener((ActionEvent e) -> {
+        panel2.figure = "square";
+    });
+
+    frame.setSize(1000,500);
+    frame.add(panel, BorderLayout.WEST);
+    frame.add(panel2);
+    frame.setVisible(true);
+
+
+  }
+}
+
