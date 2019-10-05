@@ -23,7 +23,7 @@ class Circle implements shape
     }
     public void Draw(Graphics2D g)
     {
-        g.drawOval(x, y, 30, 30);
+        g.drawOval(x, y, 75, 75);
     }
 }
 class Box implements shape
@@ -36,7 +36,7 @@ class Box implements shape
     }
     public void Draw(Graphics2D g)
     {
-        g.drawRect(x, y, 30, 30);
+        g.drawRect(x, y, 75, 75);
     }
 }
 class JPanelDraw extends JPanel
@@ -63,12 +63,14 @@ class JPanelDraw extends JPanel
                 if(figure.equals("circle"))
                 {
                     Circle c = new Circle(e.getX(), e.getY());
-                    System.out.println("Circle");
+                    points.add(c);
+                    System.out.println("Draw Circle");
                 }
                 if(figure.equals("box"))
                 {
-                    Box s =new Box(e.getX(), e.getY());
-                    System.out.println("Box");
+                    Box b = new Box(e.getX(), e.getY());
+                    points.add(b);
+                    System.out.println("Draw Box");
                 }
                 repaint();
             }
@@ -108,7 +110,7 @@ public class Hw1
             public void actionPerformed(ActionEvent e)
             {
                 panelRight.figure = "circle";
-                System.out.println("1");
+                System.out.println("figure set to circle");
             }
         });
         buttonBox.addActionListener(new ActionListener()
@@ -117,7 +119,7 @@ public class Hw1
             public void actionPerformed(ActionEvent e)
             {
                 panelRight.figure = "box";
-                System.out.println("2");
+                System.out.println("figure set to square");
 
             }
         });
