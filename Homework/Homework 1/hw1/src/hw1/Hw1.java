@@ -10,10 +10,18 @@ package hw1;
  * @author Andrew Duong
  */
 import java.util.ArrayList;
+
+import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Color;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -34,7 +42,7 @@ class Circle implements shape
     }
     public void Draw(Graphics2D g)
     {
-        g.drawOval(x, y, 30, 30);
+        g.drawOval(x, y, 75, 75);
     }
 }
 class Box implements shape
@@ -47,52 +55,43 @@ class Box implements shape
     }
     public void Draw(Graphics2D g)
     {
-        g.drawRect(x, y, 30, 30);
+        g.drawRect(x, y, 75, 75);
     }
 }
-class JPanelDraw extends JPanel
+
+class Model
 {
-    // private static final long serialVersionUID = 1L;
-    private ArrayList<shape> points = new ArrayList<shape>();
-    public String figure = "";
-    @Override
-    public void paintComponent(Graphics g)
+    private ArrayList<Point> points;
+    private ArrayList<Point> points2;
+    public static String flag = "";
+    
+    public Model()
     {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
-        for(shape point : points)
+        points = new ArrayList<Point>();
+        points2 = new ArrayList<Point>();
+    }
+    public void addPoint(String s)
+    {
+        if(s == "circle")
         {
-            point.Draw(g2);
+            points.add(new Point());
+        }
+        if(s == "box")
+        {
+            points.add(new Point());
         }
     }
-    public JPanelDraw()
+    public void getPoint(int i)
     {
-        addMouseListener(new MouseAdapter()
-        {
-            public void mousePressed(MouseEvent e)
-            {
-                if(figure.equals("circle"))
-                {
-                    Circle c = new Circle(e.getX(), e.getY());
-                    System.out.println("Circle");
-                }
-                if(figure.equals("box"))
-                {
-                    Box s =new Box(e.getX(), e.getY());
-                    System.out.println("Box");
-                }
-                repaint();
-            }
-        });
+        points.get(i);
     }
 }
-class Hw1 {
-    /**
-     * @param args the command line arguments
-     */
-    // private static final long serialVersionUID = 1L;
-    public static void main(String[] args) {
-        // create a new frame to stor text field and button 
+class View extends JFrame
+{
+    private Model model = new Model();
+    private Controller controller = new Controller(model);
+    public View(Model model, Controller controller)
+    {
         JFrame frame = new JFrame("HW1 GUI");
 
         // create a new buttons
@@ -104,31 +103,13 @@ class Hw1 {
         JPanelDraw panelLeft = new JPanelDraw(); 
         panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         panelLeft.setBackground(Color.DARK_GRAY);
-     
+
         JPanel panelRight = new JPanel();
         panelRight.setBackground(Color.white); 
 
         // add buttons and textfield to panel 
         panelLeft.add(buttonCircle,BorderLayout.WEST); 
-        panelLeft.add(buttonBox,BorderLayout.WEST); 
-
-        // add mouse click listeners
-        buttonCircle.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                panelLeft.figure = "circle";
-            }
-        });
-        buttonBox.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                panelLeft.figure = "box";
-            }
-        });
+        panelLeft.add(buttonBox,BorderLayout.WEST);
 
         // add panel to frame 
         frame.add(panelLeft,BorderLayout.WEST);
@@ -138,19 +119,43 @@ class Hw1 {
         frame.setSize(600, 400); 
         frame.setVisible(true);
 
-        buttonCircle.addActionListener(new ActionListener()
+        buttonCircle.addActionListener(controller.actionListenerCircle);
+        buttonBox.addActionListener(controller.actionListenerBox);
+    }
+}
+class Controller
+{
+    private Model model = new Model();
+    public Controller(Model model)
+    {
+        this.model = model;
+    }
+    public static ActionListener actionListenerCircle = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
         {
-            public void actionPerformed(ActionEvent e)
-            {
-                
-            }
-        });
-        buttonBox.addActionListener(new ActionListener()
+            Model.flag = "circle";
+        }
+    };
+    public static ActionListener actionListenerBox = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
         {
-            public void actionPerformed(ActionEvent e)
-            {
-            
-            }
-        });
+            Model.flag = "box";
+        }
+    };
+}
+class JPanelDraw extends JPanel
+{
+    
+}
+class Hw1 {
+    /**
+     * @param args the command line arguments
+     */
+    // private static final long serialVersionUID = 1L;
+    public static void main(String[] args) {
+        // create a new frame to stor text field and button 
+        
     }
 }
