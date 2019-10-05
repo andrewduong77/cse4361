@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hw1;
 
-/**
- *
- * @author Andrew Duong
- */
 import java.util.ArrayList;
 
 import java.awt.EventQueue;
@@ -92,6 +83,7 @@ class View extends JFrame
     private Controller controller = new Controller(model);
     public View(Model model, Controller controller)
     {
+        // create a new frame to store text field and button 
         JFrame frame = new JFrame("HW1 GUI");
 
         // create a new buttons
@@ -149,13 +141,13 @@ class JPanelDraw extends JPanel
 {
     
 }
-class Hw1 {
-    /**
-     * @param args the command line arguments
-     */
-    // private static final long serialVersionUID = 1L;
-    public static void main(String[] args) {
-        // create a new frame to stor text field and button 
-        
+class Hw1
+{
+//    private static final long serialVersionUID = 1L;
+    public static void main(String[] args)
+    {
+        Model model = new Model();
+        Controller controller = new Controller(model);
+        View view = new View(model, controller);
     }
 }
