@@ -126,7 +126,7 @@ class View extends JFrame
         JButton buttonBox = new JButton("Box");
 
         // create a panel to add buttons 
-        JPanelDraw panelLeft = new JPanelDraw(); 
+        JPanel panelLeft = new JPanel(); 
         panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         panelLeft.setBackground(Color.DARK_GRAY);
 
@@ -139,7 +139,7 @@ class View extends JFrame
 
         // add panel to frame 
         frame.add(panelLeft,BorderLayout.WEST);
-        frame.add(panelRight,BorderLayout.CENTER);
+        frame.add(panelRight);
 
         // set the size of frame 
         frame.setSize(600, 400); 
