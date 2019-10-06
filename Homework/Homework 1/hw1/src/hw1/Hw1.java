@@ -49,41 +49,6 @@ class Box implements shape
         g.drawRect(x, y, 75, 75);
     }
 }
-class JPanelDraw extends JPanel
-{
-//    private ArrayList<shape> points = new ArrayList<shape>();
-//    public String figure = "";
-    @Override
-    public void paintComponent(Graphics g)
-    {
-//        super.paintComponent(g);
-//        Graphics2D g2 = (Graphics2D) g;
-//        for(shape point : points)
-//        {
-//            point.Draw(g2);
-//        }
-    }
-    public JPanelDraw()
-    {
-        addMouseListener(new MouseAdapter()
-        {
-//            public void mousePressed(MouseEvent e)
-//            {
-//                if(figure.equals("circle"))
-//                {
-//                    Circle c = new Circle(e.getX(), e.getY());
-//                    System.out.println("Circle");
-//                }
-//                if(figure.equals("box"))
-//                {
-//                    Box s =new Box(e.getX(), e.getY());
-//                    System.out.println("Box");
-//                }
-//                repaint();
-//            }
-        });
-    }
-}
 class Model
 {
     private ArrayList<Point> points;
@@ -130,7 +95,7 @@ class View extends JFrame
         panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
         panelLeft.setBackground(Color.DARK_GRAY);
 
-        JPanel panelRight = new JPanel();
+        JPanelDraw panelRight = new JPanelDraw();
         panelRight.setBackground(Color.white); 
 
         // add buttons and textfield to panel 
@@ -149,29 +114,13 @@ class View extends JFrame
         buttonBox.addActionListener(controller.actionListenerBox);
     }
 }
-class Controller extends JPanel
+class Controller implements MouseListener
 {
     private Model model = new Model();
     public Controller(Model model)
     {
         this.model = model;
-        addMouseListener(new MouseAdapter()
-        {
-            public void mousePressed(MouseEvent e)
-            {
-                if(model.flag.equals("circle"))
-                {
-                    Circle c = new Circle(e.getX(), e.getY());
-                    System.out.println("Drawing Circle");
-                }
-                if(model.flag.equals("box"))
-                {
-                    Box s = new Box(e.getX(), e.getY());
-                    System.out.println("Drawing Box");
-                }
-                repaint();
-            }
-        });
+
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
@@ -189,13 +138,73 @@ class Controller extends JPanel
             System.out.println("flag set to box");
         }
     };
-//    public static MouseAdapter mouseAdapterDraw = new MouseAdapter()
-//    {
-//        public void mousePressed(MouseEvent e)
-//        {
-//
-//        }
-//    };
+
+    @Override
+    public void mouseClicked(MouseEvent e)
+    {
+            if(model.flag.equals("circle"))
+            {
+                Circle c = new Circle(e.getX(), e.getY());
+                System.out.println("Drawing Circle");
+            }
+            if(model.flag.equals("box"))
+            {
+                Box s = new Box(e.getX(), e.getY());
+                System.out.println("Drawing Box");
+            }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
+}
+class JPanelDraw extends JPanel
+{
+    // private static final long serialVersionUID = 1L;
+//    @Override
+//    private ArrayList<shape> points = new ArrayList<shape>();
+    private Model model = new Model();
+    private Controller controller = new Controller(model);
+//    private View view = new View(model, controller);
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        for(shape point : modelpoints)
+        {
+            point.Draw(g2);
+        }
+    }
+    public JPanelDraw()
+    {
+        addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+                if(model.flag.equals("circle"))
+                {
+                    Circle c = new Circle(e.getX(), e.getY());
+                    points.add(c);
+                    System.out.println("Draw Circle");
+                }
+                if(model.flag.equals("box"))
+                {
+                    Box b = new Box(e.getX(), e.getY());
+                    points.add(b);
+                    System.out.println("Draw Box");
+                }
+                repaint();
+            }
+        });
+    }
 }
 class Hw1
 {
