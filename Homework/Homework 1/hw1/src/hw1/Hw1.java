@@ -135,14 +135,14 @@ class Controller implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e)
     {
-            if(model.flag.equals("circle"))
-            {
-                Circle c = new Circle(e.getX(), e.getY());
-            }
-            if(model.flag.equals("box"))
-            {
-                Box b = new Box(e.getX(), e.getY());
-            }
+        if(model.flag.equals("circle"))
+        {
+            Circle c = new Circle(e.getX(), e.getY());
+        }
+        if(model.flag.equals("box"))
+        {
+            Box b = new Box(e.getX(), e.getY());
+        }
     }
 
     @Override
