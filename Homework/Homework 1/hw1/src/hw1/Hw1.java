@@ -159,12 +159,8 @@ class Controller implements MouseListener
 }
 class JPanelDraw extends JPanel
 {
-    // private static final long serialVersionUID = 1L;
-//    @Override
-//    private ArrayList<shape> points = new ArrayList<shape>();
     private Model model = new Model();
     private Controller controller = new Controller(model);
-//    private View view = new View(model, controller);
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -195,7 +191,6 @@ class JPanelDraw extends JPanel
 }
 class Hw1
 {
-//    private static final long serialVersionUID = 1L;
     public static void main(String[] args)
     {
         Model model = new Model();
