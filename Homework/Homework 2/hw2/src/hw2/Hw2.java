@@ -62,6 +62,10 @@ class Model
     {
         points.add(shape);
     }
+    public void removePoint(int i)
+    {
+        points.remove(points.size() - 1);
+    }
     public void getPoint(int i)
     {
         points.get(i);
@@ -84,6 +88,8 @@ class View extends JFrame
         // JButton buttonCircle, buttonBox;
         JButton buttonCircle = new JButton("Circle");
         JButton buttonBox = new JButton("Box");
+        JButton buttonUndo = new JButton("Undo");
+        JButton buttonRedo = new JButton("Redo");
 
         // create a panel to add buttons 
         JPanel panelLeft = new JPanel(); 
@@ -96,6 +102,8 @@ class View extends JFrame
         // add buttons and textfield to panel 
         panelLeft.add(buttonCircle,BorderLayout.WEST); 
         panelLeft.add(buttonBox,BorderLayout.WEST);
+        panelLeft.add(buttonUndo,BorderLayout.WEST);
+        panelLeft.add(buttonRedo,BorderLayout.WEST);
 
         // add panel to frame 
         frame.add(panelLeft,BorderLayout.WEST);
@@ -107,6 +115,8 @@ class View extends JFrame
 
         buttonCircle.addActionListener(controller.actionListenerCircle);
         buttonBox.addActionListener(controller.actionListenerBox);
+        buttonUndo.addActionListener(controller.actionListenerUndo);
+        buttonRedo.addActionListener(controller.actionListenerRedo);
     }
 }
 class Controller implements MouseListener
@@ -131,19 +141,23 @@ class Controller implements MouseListener
             Model.flag = "box";
         }
     };
+    public static ActionListener actionListenerUndo = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+//            model.removePoint();
+        }
+    };
+    public static ActionListener actionListenerRedo = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            
+        }
+    };
 
     @Override
-    public void mouseClicked(MouseEvent e)
-    {
-        if(model.flag.equals("circle"))
-        {
-            Circle c = new Circle(e.getX(), e.getY());
-        }
-        if(model.flag.equals("box"))
-        {
-            Box b = new Box(e.getX(), e.getY());
-        }
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     @Override
     public void mousePressed(MouseEvent e) {}
