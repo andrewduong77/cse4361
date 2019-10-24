@@ -83,11 +83,11 @@ class Model
 class View extends JFrame
 {
     private Model model = new Model();
-    public View(Model model)
+    private Controller controller = new Controller(model);
+    public View(Model model, Controller controller)
     {
         // create a new frame to store text field and button 
         JFrame frame = new JFrame("HW1 GUI");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // create a new buttons
         // JButton buttonCircle, buttonBox;
@@ -118,10 +118,18 @@ class View extends JFrame
         frame.setSize(600, 400); 
         frame.setVisible(true);
 
-        buttonCircle.addActionListener(actionListenerCircle);
-        buttonBox.addActionListener(actionListenerBox);
-        buttonUndo.addActionListener(actionListenerUndo);
-        buttonRedo.addActionListener(actionListenerRedo);
+        buttonCircle.addActionListener(controller.actionListenerCircle);
+        buttonBox.addActionListener(controller.actionListenerBox);
+        buttonUndo.addActionListener(controller.actionListenerUndo);
+        buttonRedo.addActionListener(controller.actionListenerRedo);
+    }
+}
+class Controller implements MouseListener
+{
+    private Model model = new Model();
+    public Controller(Model model)
+    {
+        this.model = model;
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
@@ -152,33 +160,25 @@ class View extends JFrame
         }
     };
 
-//    @Override
+    @Override
     public void mouseClicked(MouseEvent e) {}
 
-//    @Override
+    @Override
     public void mousePressed(MouseEvent e) {}
 
-//    @Override
+    @Override
     public void mouseReleased(MouseEvent e) {}
 
-//    @Override
+    @Override
     public void mouseEntered(MouseEvent e) {}
 
-//    @Override
+    @Override
     public void mouseExited(MouseEvent e) {}
 }
-//class Controller
-//{
-//    private Model model = new Model();
-//    public Controller(Model model)
-//    {
-//        this.model = model;
-//    }
-//}
 class JPanelDraw extends JPanel
 {
     private Model model = new Model();
-//    private Controller controller = new Controller(model);
+    private Controller controller = new Controller(model);
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -196,14 +196,11 @@ class JPanelDraw extends JPanel
                 {
                     Circle circle = new Circle(e.getX(), e.getY());
                     model.addPoint(circle);
-                    model.flag = "";
-                    
                 }
                 if(model.flag.equals("box"))
                 {
                     Box box = new Box(e.getX(), e.getY());
                     model.addPoint(box);
-                    model.flag = "";
                 }
                 repaint();
             }
@@ -215,7 +212,7 @@ class Hw2
     public static void main(String[] args)
     {
         Model model = new Model();
-//        Controller controller = new Controller(model);
-        View view = new View(model);
+        Controller controller = new Controller(model);
+        View view = new View(model, controller);
     }
 }
