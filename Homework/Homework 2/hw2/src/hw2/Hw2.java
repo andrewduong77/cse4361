@@ -1,6 +1,7 @@
 package hw2;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -51,26 +52,29 @@ class Box implements Shape
 }
 class Model
 {
-    private ArrayList<Shape> points;
+    private Stack<Shape> points;
+    private Stack<Shape> pointsRemoved;
     public static String flag = "";
     
     public Model()
     {
-        points = new ArrayList<Shape>();
+        points = new Stack<Shape>();
+        pointsRemoved = new Stack<Shape>();
     }
     public void addPoint(Shape shape)
     {
-        points.add(shape);
+        points.push(shape);
     }
     public void removePoint(int i)
     {
         points.remove(points.size() - 1);
+//        points.add(e)
     }
     public void getPoint(int i)
     {
         points.get(i);
     }
-    public ArrayList<Shape> getPoints()
+    public Stack<Shape> getPoints()
     {
          return points;
     }
