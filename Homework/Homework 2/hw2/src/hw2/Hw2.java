@@ -54,6 +54,7 @@ class Model
 {
     private Stack<Shape> points;
     private Stack<Shape> pointsRemoved;
+    private Shape temp;
     public static String flag = "";
     
     public Model()
@@ -65,10 +66,10 @@ class Model
     {
         points.push(shape);
     }
-    public void removePoint(int i)
+    public void removePoint()
     {
-        points.remove(points.size() - 1);
-//        points.add(e)
+        temp = points.pop();
+        pointsRemoved.push(temp);
     }
     public void getPoint(int i)
     {
@@ -129,7 +130,6 @@ class Controller implements MouseListener
     public Controller(Model model)
     {
         this.model = model;
-
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
@@ -145,11 +145,11 @@ class Controller implements MouseListener
             Model.flag = "box";
         }
     };
-    public static ActionListener actionListenerUndo = new ActionListener()
+    public ActionListener actionListenerUndo = new ActionListener()
     {
         public void actionPerformed(ActionEvent e)
         {
-//            model.removePoint();
+            model.removePoint();
         }
     };
     public static ActionListener actionListenerRedo = new ActionListener()
