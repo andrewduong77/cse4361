@@ -119,18 +119,10 @@ class View extends JFrame
         frame.setSize(600, 400); 
         frame.setVisible(true);
 
-        buttonCircle.addActionListener(controller.actionListenerCircle);
-        buttonBox.addActionListener(controller.actionListenerBox);
-        buttonUndo.addActionListener(controller.actionListenerUndo);
-        buttonRedo.addActionListener(controller.actionListenerRedo);
-    }
-}
-class Controller implements MouseListener
-{
-    private Model model = new Model();
-    public Controller(Model model)
-    {
-        this.model = model;
+        buttonCircle.addActionListener(actionListenerCircle);
+        buttonBox.addActionListener(actionListenerBox);
+        buttonUndo.addActionListener(actionListenerUndo);
+        buttonRedo.addActionListener(actionListenerRedo);
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
@@ -161,20 +153,28 @@ class Controller implements MouseListener
         }
     };
 
-    @Override
+//    @Override
     public void mouseClicked(MouseEvent e) {}
 
-    @Override
+//    @Override
     public void mousePressed(MouseEvent e) {}
 
-    @Override
+//    @Override
     public void mouseReleased(MouseEvent e) {}
 
-    @Override
+//    @Override
     public void mouseEntered(MouseEvent e) {}
 
-    @Override
+//    @Override
     public void mouseExited(MouseEvent e) {}
+}
+class Controller
+{
+    private Model model = new Model();
+    public Controller(Model model)
+    {
+        this.model = model;
+    }
 }
 class JPanelDraw extends JPanel
 {
