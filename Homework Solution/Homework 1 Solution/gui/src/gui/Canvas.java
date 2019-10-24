@@ -15,7 +15,7 @@ import javax.swing.*;
  * @version 1.0
  */
 import java.awt.*;
-import shape.*;
+import gui.shape.*;
 
 public class Canvas extends JPanel {
    HW1Shape shapes;

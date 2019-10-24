@@ -88,6 +88,7 @@ class View extends JFrame
     {
         // create a new frame to store text field and button 
         JFrame frame = new JFrame("HW1 GUI");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // create a new buttons
         // JButton buttonCircle, buttonBox;
@@ -196,11 +197,13 @@ class JPanelDraw extends JPanel
                 {
                     Circle circle = new Circle(e.getX(), e.getY());
                     model.addPoint(circle);
+                    model.flag = "";
                 }
                 if(model.flag.equals("box"))
                 {
                     Box box = new Box(e.getX(), e.getY());
                     model.addPoint(box);
+                    model.flag = "";
                 }
                 repaint();
             }

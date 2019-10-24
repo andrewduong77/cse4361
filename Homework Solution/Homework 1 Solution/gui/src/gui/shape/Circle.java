@@ -1,4 +1,4 @@
-package shape;
+package gui.shape;
 
 import java.awt.Graphics;
 
