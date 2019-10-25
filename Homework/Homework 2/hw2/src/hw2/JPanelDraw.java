@@ -40,4 +40,9 @@ public class JPanelDraw extends JPanel
         model.setFlag("");
         repaint();
     }
+    public void drawUndo()
+    {
+        model.removePoint();
+        repaint();
+    }
 }

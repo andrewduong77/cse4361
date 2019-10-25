@@ -76,8 +76,7 @@ public class View extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
-                model.removePoint();
-                repaint();
+                panelRight.drawUndo();
             }
         });
         buttonRedo.addActionListener(new ActionListener()

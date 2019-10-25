@@ -3,32 +3,38 @@ package hw2;
 import java.util.Stack;
 
 public class Model {
-    private Stack<Shape> points;
-    private Stack<Shape> pointsRemoved;
+    private Stack<Shape> shapes;
+    private Stack<Shape> shapeRedoList;
     private Shape temp;
     private static String flag = "";
     
     public Model()
     {
-        points = new Stack<Shape>();
-        pointsRemoved = new Stack<Shape>();
+        shapes = new Stack<Shape>();
+        shapeRedoList = new Stack<Shape>();
     }
     public void addPoint(Shape shape)
     {
-        points.push(shape);
+        shapes.push(shape);
     }
     public void removePoint()
     {
-        temp = points.pop();
-        pointsRemoved.push(temp);
+        if(shapes.isEmpty())
+            System.out.println("points stack is empty");
+        else
+        {
+            temp = shapes.pop();
+            shapeRedoList.push(temp);
+            System.out.println("shape removed from stack and added to shapeRedoList");
+        }
     }
     public void getPoint(int i)
     {
-        points.get(i);
+        shapes.get(i);
     }
     public Stack<Shape> getPoints()
     {
-         return points;
+         return shapes;
     }
     public void setFlag(String newFlag)
     {
