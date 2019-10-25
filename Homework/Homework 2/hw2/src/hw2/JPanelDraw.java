@@ -14,7 +14,7 @@ public class JPanelDraw extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        Iterator<Shape> it = model.getPoints().iterator();
+        Iterator<Shape> it = model.getShapes().iterator();
         while(it.hasNext())
             it.next().Draw(g2);
     }
@@ -22,27 +22,32 @@ public class JPanelDraw extends JPanel
     public void drawCircle(MouseEvent e)
     {
         Circle circle = new Circle(e.getX(), e.getY());
-        model.addPoint(circle);
+        model.addShape(circle);
         model.setFlag("");
         repaint();
 }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
-        model.addPoint(box);
+        model.addShape(box);
         model.setFlag("");
         repaint();
     }
     public void drawHelloworld(MouseEvent e)
     {
         Helloworld helloworld = new Helloworld(e.getX(), e.getY());
-        model.addPoint(helloworld);
+        model.addShape(helloworld);
         model.setFlag("");
         repaint();
     }
     public void drawUndo()
     {
-        model.removePoint();
+        model.removeShape();
+        repaint();
+    }
+    public void drawRedo()
+    {
+        model.addShapeRedo();
         repaint();
     }
 }

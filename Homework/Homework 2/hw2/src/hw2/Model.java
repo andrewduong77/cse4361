@@ -13,26 +13,37 @@ public class Model {
         shapes = new Stack<Shape>();
         shapeRedoList = new Stack<Shape>();
     }
-    public void addPoint(Shape shape)
+    public void addShape(Shape shape)
     {
         shapes.push(shape);
     }
-    public void removePoint()
+    public void removeShape()
     {
         if(shapes.isEmpty())
-            System.out.println("points stack is empty");
+            System.out.println("shapes stack is empty");
         else
         {
             temp = shapes.pop();
             shapeRedoList.push(temp);
-            System.out.println("shape removed from stack and added to shapeRedoList");
+            System.out.println("shape removed from shapes stack and added to shapeRedoList stack");
         }
     }
-    public void getPoint(int i)
+    public void addShapeRedo()
+    {
+        if(shapeRedoList.isEmpty())
+            System.out.println("shapeRedoList stack is empty");
+        else
+        {
+            temp = shapeRedoList.pop();
+            shapes.push(temp);
+            System.out.println("shape removed from shapeRedoList stack and added to shapes stack");
+        }
+    }
+    public void getShape(int i)
     {
         shapes.get(i);
     }
-    public Stack<Shape> getPoints()
+    public Stack<Shape> getShapes()
     {
          return shapes;
     }
