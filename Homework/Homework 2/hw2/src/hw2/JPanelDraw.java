@@ -33,10 +33,10 @@ public class JPanelDraw extends JPanel
         model.setFlag("");
         repaint();
     }
-    public void drawString(MouseEvent e)
+    public void drawHelloworld(MouseEvent e)
     {
-        String2 string2 = new String2(e.getX(), e.getY());
-        model.addPoint(string2);
+        Helloworld helloworld = new Helloworld(e.getX(), e.getY());
+        model.addPoint(helloworld);
         model.setFlag("");
         repaint();
     }

@@ -24,7 +24,7 @@ public class View extends JFrame
         // create a new buttons
         JButton buttonCircle = new JButton("Circle");
         JButton buttonBox = new JButton("Box");
-        JButton buttonString = new JButton("String");
+        JButton buttonHelloworld = new JButton("Helloworld");
         JButton buttonUndo = new JButton("Undo");
         JButton buttonRedo = new JButton("Redo");
 
@@ -39,7 +39,7 @@ public class View extends JFrame
         // add buttons and textfield to panel 
         panelLeft.add(buttonCircle,BorderLayout.WEST); 
         panelLeft.add(buttonBox,BorderLayout.WEST);
-        panelLeft.add(buttonString,BorderLayout.WEST);
+        panelLeft.add(buttonHelloworld,BorderLayout.WEST);
         panelLeft.add(buttonUndo,BorderLayout.WEST);
         panelLeft.add(buttonRedo,BorderLayout.WEST);
 
@@ -65,11 +65,11 @@ public class View extends JFrame
                 model.setFlag("box");
             }
         });
-        buttonString.addActionListener(new ActionListener()
+        buttonHelloworld.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                model.setFlag("string");
+                model.setFlag("helloworld");
             }
         });
         buttonUndo.addActionListener(new ActionListener()
@@ -99,9 +99,9 @@ public class View extends JFrame
                 {
                     panelRight.drawBox(e);
                 }
-                if(model.getFlag().equals("string"))
+                if(model.getFlag().equals("helloworld"))
                 {
-                    panelRight.drawString(e);
+                    panelRight.drawHelloworld(e);
                 }
                 repaint();
             }

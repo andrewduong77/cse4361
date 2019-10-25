@@ -11,10 +11,10 @@ import java.awt.Graphics2D;
  *
  * @author Andrew Duong
  */
-public class String2 extends Shape
+public class Helloworld extends Shape
 {
     private int x, y;
-    public String2(int x, int y)
+    public Helloworld(int x, int y)
     {
         this.x = x;
         this.y = y;
