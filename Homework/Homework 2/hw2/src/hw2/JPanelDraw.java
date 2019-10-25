@@ -14,9 +14,9 @@ public class JPanelDraw extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        Iterator it = model.getPoints().iterator();
+        Iterator<Shape> it = model.getPoints().iterator();
         while(it.hasNext())
-            ((Shape)it.next()).Draw(g2);
+            it.next().Draw(g2);
     }
 //    public JPanelDraw() {}
     public void drawCircle(MouseEvent e)
