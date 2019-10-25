@@ -126,21 +126,17 @@ class View extends JFrame
         buttonUndo.addActionListener(actionListenerUndo);
         buttonRedo.addActionListener(actionListenerRedo);
         
-        addMouseListener(new MouseAdapter()
+        panelRight.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
             {
                 if(model.flag.equals("circle"))
                 {
-                    Circle circle = new Circle(e.getX(), e.getY());
-                    model.addPoint(circle);
-                    model.flag = "";
+                    panelRight.drawCircle(e);
                 }
                 if(model.flag.equals("box"))
                 {
-                    Box box = new Box(e.getX(), e.getY());
-                    model.addPoint(box);
-                    model.flag = "";
+                    panelRight.drawBox(e);
                 }
                 repaint();
             }
@@ -209,30 +205,21 @@ class JPanelDraw extends JPanel
         Iterator it = model.getPoints().iterator();
         while(it.hasNext())
             ((Shape)it.next()).Draw(g2);
-//        for(Shape point : model.getPoints())
-//            point.Draw(g2);
     }
-    public JPanelDraw()
+    public JPanelDraw() {}
+    public void drawCircle(MouseEvent e)
     {
-        addMouseListener(new MouseAdapter()
-        {
-            public void mousePressed(MouseEvent e)
-            {
-                if(model.flag.equals("circle"))
-                {
-                    Circle circle = new Circle(e.getX(), e.getY());
-                    model.addPoint(circle);
-                    model.flag = "";
-                }
-                if(model.flag.equals("box"))
-                {
-                    Box box = new Box(e.getX(), e.getY());
-                    model.addPoint(box);
-                    model.flag = "";
-                }
-                repaint();
-            }
-        });
+        Circle circle = new Circle(e.getX(), e.getY());
+        model.addPoint(circle);
+        model.flag = "";
+        repaint();
+}
+    public void drawBox(MouseEvent e)
+    {
+        Box box = new Box(e.getX(), e.getY());
+        model.addPoint(box);
+        model.flag = "";
+        repaint();
     }
 }
 public class Hw2
