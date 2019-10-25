@@ -57,7 +57,8 @@ class Model
     private Stack<Shape> points;
     private Stack<Shape> pointsRemoved;
     private Shape temp;
-    public static String flag = "";
+//    public static String flag = "";
+    private static String flag = "";
     
     public Model()
     {
@@ -80,6 +81,14 @@ class Model
     public Stack<Shape> getPoints()
     {
          return points;
+    }
+    public static void setFlag(String newFlag)
+    {
+        flag = newFlag;
+    }
+    public String getFlag()
+    {
+        return flag;
     }
 }
 class View extends JFrame
@@ -123,18 +132,30 @@ class View extends JFrame
 
         buttonCircle.addActionListener(actionListenerCircle);
         buttonBox.addActionListener(actionListenerBox);
-        buttonUndo.addActionListener(actionListenerUndo);
-        buttonRedo.addActionListener(actionListenerRedo);
-        
+        buttonUndo.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                model.removePoint();
+                repaint();
+            }
+        });
+        buttonRedo.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                
+            }
+        });
         panelRight.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
             {
-                if(model.flag.equals("circle"))
+                if(model.getFlag().equals("circle"))
                 {
                     panelRight.drawCircle(e);
                 }
-                if(model.flag.equals("box"))
+                if(model.getFlag().equals("box"))
                 {
                     panelRight.drawBox(e);
                 }
@@ -146,23 +167,25 @@ class View extends JFrame
     {
         public void actionPerformed(ActionEvent e)
         {
-            Model.flag = "circle";
+//            Model.flag = "circle";
+            Model.setFlag("circle");
         }
     };
     public static ActionListener actionListenerBox = new ActionListener()
     {
         public void actionPerformed(ActionEvent e)
         {
-            Model.flag = "box";
+//            Model.flag = "box";
+            Model.setFlag("box");
         }
     };
-    public ActionListener actionListenerUndo = new ActionListener()
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            model.removePoint();
-        }
-    };
+//    public ActionListener actionListenerUndo = new ActionListener()
+//    {
+//        public void actionPerformed(ActionEvent e)
+//        {
+//            model.removePoint();
+//        }
+//    };
     public static ActionListener actionListenerRedo = new ActionListener()
     {
         public void actionPerformed(ActionEvent e)
@@ -206,19 +229,25 @@ class JPanelDraw extends JPanel
         while(it.hasNext())
             ((Shape)it.next()).Draw(g2);
     }
-    public JPanelDraw() {}
+//    public JPanelDraw() {}
     public void drawCircle(MouseEvent e)
     {
         Circle circle = new Circle(e.getX(), e.getY());
         model.addPoint(circle);
-        model.flag = "";
+        Model.setFlag("");
+//        model.flag = "";
         repaint();
 }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
         model.addPoint(box);
-        model.flag = "";
+        Model.setFlag("");
+//        model.flag = "";
+        repaint();
+    }
+    public void panelRepaint()
+    {
         repaint();
     }
 }
