@@ -1,7 +1,9 @@
 package hw2;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.Stack;
 
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -123,6 +125,26 @@ class View extends JFrame
         buttonBox.addActionListener(actionListenerBox);
         buttonUndo.addActionListener(actionListenerUndo);
         buttonRedo.addActionListener(actionListenerRedo);
+        
+        addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+                if(model.flag.equals("circle"))
+                {
+                    Circle circle = new Circle(e.getX(), e.getY());
+                    model.addPoint(circle);
+                    model.flag = "";
+                }
+                if(model.flag.equals("box"))
+                {
+                    Box box = new Box(e.getX(), e.getY());
+                    model.addPoint(box);
+                    model.flag = "";
+                }
+                repaint();
+            }
+        });
     }
     public static ActionListener actionListenerCircle = new ActionListener()
     {
@@ -184,8 +206,11 @@ class JPanelDraw extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for(Shape point : model.getPoints())
-            point.Draw(g2);
+        Iterator it = model.getPoints().iterator();
+        while(it.hasNext())
+            ((Shape)it.next()).Draw(g2);
+//        for(Shape point : model.getPoints())
+//            point.Draw(g2);
     }
     public JPanelDraw()
     {
@@ -210,7 +235,7 @@ class JPanelDraw extends JPanel
         });
     }
 }
-class Hw2
+public class Hw2
 {
     public static void main(String[] args)
     {
