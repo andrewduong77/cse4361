@@ -2,25 +2,10 @@ package hw2;
 
 import java.io.*;
 import java.util.*;
-//import java.util.ArrayList;
-//import java.util.Stack;
-
-//import java.awt.EventQueue;
-//import java.awt.Graphics;
-//import java.awt.Graphics2D;
-//import java.awt.Point;
-//import java.awt.Color;
-//import java.awt.RenderingHints;
-//import java.awt.event.MouseAdapter;
-//import java.awt.event.MouseEvent;
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-//import javax.swing.BoxLayout;
-//import javax.swing.JButton;
-//import javax.swing.JFrame;
-//import javax.swing.JPanel; 
 
 interface Shape
 {
@@ -57,7 +42,6 @@ class Model
     private Stack<Shape> points;
     private Stack<Shape> pointsRemoved;
     private Shape temp;
-//    public static String flag = "";
     private static String flag = "";
     
     public Model()
@@ -82,7 +66,7 @@ class Model
     {
          return points;
     }
-    public static void setFlag(String newFlag)
+    public void setFlag(String newFlag)
     {
         flag = newFlag;
     }
@@ -102,7 +86,6 @@ class View extends JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // create a new buttons
-        // JButton buttonCircle, buttonBox;
         JButton buttonCircle = new JButton("Circle");
         JButton buttonBox = new JButton("Box");
         JButton buttonUndo = new JButton("Undo");
@@ -130,8 +113,20 @@ class View extends JFrame
         frame.setSize(600, 400); 
         frame.setVisible(true);
 
-        buttonCircle.addActionListener(actionListenerCircle);
-        buttonBox.addActionListener(actionListenerBox);
+        buttonCircle.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                model.setFlag("circle");
+            }
+        });
+        buttonBox.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                model.setFlag("box");
+            }
+        });
         buttonUndo.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -163,51 +158,6 @@ class View extends JFrame
             }
         });
     }
-    public static ActionListener actionListenerCircle = new ActionListener()
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-//            Model.flag = "circle";
-            Model.setFlag("circle");
-        }
-    };
-    public static ActionListener actionListenerBox = new ActionListener()
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-//            Model.flag = "box";
-            Model.setFlag("box");
-        }
-    };
-//    public ActionListener actionListenerUndo = new ActionListener()
-//    {
-//        public void actionPerformed(ActionEvent e)
-//        {
-//            model.removePoint();
-//        }
-//    };
-//    public static ActionListener actionListenerRedo = new ActionListener()
-//    {
-//        public void actionPerformed(ActionEvent e)
-//        {
-//            
-//        }
-//    };
-
-//    @Override
-    public void mouseClicked(MouseEvent e) {}
-
-//    @Override
-    public void mousePressed(MouseEvent e) {}
-
-//    @Override
-    public void mouseReleased(MouseEvent e) {}
-
-//    @Override
-    public void mouseEntered(MouseEvent e) {}
-
-//    @Override
-    public void mouseExited(MouseEvent e) {}
 }
 class Controller
 {
@@ -234,20 +184,14 @@ class JPanelDraw extends JPanel
     {
         Circle circle = new Circle(e.getX(), e.getY());
         model.addPoint(circle);
-        Model.setFlag("");
-//        model.flag = "";
+        model.setFlag("");
         repaint();
 }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
         model.addPoint(box);
-        Model.setFlag("");
-//        model.flag = "";
-        repaint();
-    }
-    public void panelRepaint()
-    {
+        model.setFlag("");
         repaint();
     }
 }
