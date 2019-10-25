@@ -16,6 +16,14 @@ public class Model {
     public void addShape(Shape shape)
     {
         shapes.push(shape);
+//        shapeRedoList.empty();
+        // empty shapeRedoList stack
+        while(!shapeRedoList.isEmpty())
+            shapeRedoList.pop();
+        if(shapeRedoList.isEmpty())
+            System.out.println("shapeRedoList stack is empty");
+        else
+            System.out.println("shapeRedoList stack is still NOT empty");
     }
     public void removeShape()
     {
