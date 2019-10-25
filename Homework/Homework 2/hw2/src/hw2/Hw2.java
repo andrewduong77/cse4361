@@ -5,22 +5,22 @@ import java.util.*;
 //import java.util.ArrayList;
 //import java.util.Stack;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Color;
-import java.awt.RenderingHints;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+//import java.awt.EventQueue;
+//import java.awt.Graphics;
+//import java.awt.Graphics2D;
+//import java.awt.Point;
+//import java.awt.Color;
+//import java.awt.RenderingHints;
+//import java.awt.event.MouseAdapter;
+//import java.awt.event.MouseEvent;
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel; 
+//import javax.swing.BoxLayout;
+//import javax.swing.JButton;
+//import javax.swing.JFrame;
+//import javax.swing.JPanel; 
 
 interface Shape
 {
@@ -186,13 +186,13 @@ class View extends JFrame
 //            model.removePoint();
 //        }
 //    };
-    public static ActionListener actionListenerRedo = new ActionListener()
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            
-        }
-    };
+//    public static ActionListener actionListenerRedo = new ActionListener()
+//    {
+//        public void actionPerformed(ActionEvent e)
+//        {
+//            
+//        }
+//    };
 
 //    @Override
     public void mouseClicked(MouseEvent e) {}
