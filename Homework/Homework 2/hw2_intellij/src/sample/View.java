@@ -13,9 +13,8 @@ import javax.swing.JPanel;
 
 public class View extends JFrame
 {
-    private Model model = new Model();
-    private Controller controller = new Controller(model);
-    public View(Model model, Controller controller)
+    private Controller controller = new Controller();
+    public View(Controller controller)
     {
         // create a new frame to store text field and button
         JFrame frame = new JFrame("HW1 GUI");
@@ -55,21 +54,21 @@ public class View extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
-                model.setFlag("circle");
+                controller.setFlag("circle");
             }
         });
         buttonBox.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                model.setFlag("box");
+                controller.setFlag("box");
             }
         });
         buttonHelloworld.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                model.setFlag("helloworld");
+                controller.setFlag("helloworld");
             }
         });
         buttonUndo.addActionListener(new ActionListener()
@@ -90,15 +89,15 @@ public class View extends JFrame
         {
             public void mousePressed(MouseEvent e)
             {
-                if(model.getFlag().equals("circle"))
+                if(controller.getFlag().equals("circle"))
                 {
                     panelRight.drawCircle(e);
                 }
-                if(model.getFlag().equals("box"))
+                if(controller.getFlag().equals("box"))
                 {
                     panelRight.drawBox(e);
                 }
-                if(model.getFlag().equals("helloworld"))
+                if(controller.getFlag().equals("helloworld"))
                 {
                     panelRight.drawHelloworld(e);
                 }

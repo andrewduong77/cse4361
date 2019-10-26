@@ -8,46 +8,44 @@ import javax.swing.JPanel;
 
 public class JPanelDraw extends JPanel
 {
-    private Model model = new Model();
-    private Controller controller = new Controller(model);
+    private Controller controller = new Controller();
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        Iterator<Shape> it = model.getShapes().iterator();
+        Iterator<Shape> it = controller.getShapes().iterator();
         while(it.hasNext())
             it.next().Draw(g2);
     }
-//    public JPanelDraw() {}
     public void drawCircle(MouseEvent e)
     {
         Circle circle = new Circle(e.getX(), e.getY());
-        model.addShape(circle);
-        model.setFlag("");
+        controller.addShape(circle);
+        controller.setFlag("");
         repaint();
 }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
-        model.addShape(box);
-        model.setFlag("");
+        controller.addShape(box);
+        controller.setFlag("");
         repaint();
     }
     public void drawHelloworld(MouseEvent e)
     {
         Helloworld helloworld = new Helloworld(e.getX(), e.getY());
-        model.addShape(helloworld);
-        model.setFlag("");
+        controller.addShape(helloworld);
+        controller.setFlag("");
         repaint();
     }
     public void drawUndo()
     {
-        model.removeShape();
+        controller.removeShape();
         repaint();
     }
     public void drawRedo()
     {
-        model.addShapeRedo();
+        controller.addShapeRedo();
         repaint();
     }
 }
