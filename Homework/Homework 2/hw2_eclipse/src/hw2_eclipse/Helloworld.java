@@ -1,4 +1,4 @@
-package hw2;
+package hw2_eclipse;
 
 import java.awt.Graphics2D;
 

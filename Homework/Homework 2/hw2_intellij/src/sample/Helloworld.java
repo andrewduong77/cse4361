@@ -1,4 +1,4 @@
-package hw2;
+package sample;
 
 import java.awt.Graphics2D;
 
