@@ -1,5 +1,3 @@
-package hw4;
-
 import java.awt.Graphics2D;
 
 public abstract class Shape
