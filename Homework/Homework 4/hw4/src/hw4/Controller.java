@@ -20,22 +20,6 @@ public class Controller
         while(!shapeRedoList.isEmpty())
             shapeRedoList.pop();
     }
-    public void removeShape()
-    {
-        if(!shapes.isEmpty())
-        {
-            temp = shapes.pop();
-            shapeRedoList.push(temp);
-        }
-    }
-    public void addShapeRedo()
-    {
-        if(!shapeRedoList.isEmpty())
-        {
-            temp = shapeRedoList.pop();
-            shapes.push(temp);
-        }
-    }
     public void getShape(int i)
     {
         shapes.get(i);

@@ -31,21 +31,4 @@ public class JPanelDraw extends JPanel
         controller.setFlag("");
         repaint();
     }
-    public void drawHelloworld(MouseEvent e)
-    {
-        Helloworld helloworld = new Helloworld(e.getX(), e.getY());
-        controller.addShape(helloworld);
-        controller.setFlag("");
-        repaint();
-    }
-    public void drawUndo()
-    {
-        controller.removeShape();
-        repaint();
-    }
-    public void drawRedo()
-    {
-        controller.addShapeRedo();
-        repaint();
-    }
 }

@@ -1,6 +1,6 @@
-package hw2;
+package hw4;
 
-public class Hw2
+public class Hw4
 {
     public static void main(String[] args)
     {

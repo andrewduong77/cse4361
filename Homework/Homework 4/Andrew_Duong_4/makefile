@@ -8,7 +8,6 @@ CLASSES = \
 		Box.java \
 		Circle.java \
 		Controller.java \
-		Helloworld.java \
 		Hw4.java \
 		JPanelDraw.java \
 		Shape.java \

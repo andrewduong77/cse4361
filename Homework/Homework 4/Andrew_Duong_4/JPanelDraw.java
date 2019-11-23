@@ -1,4 +1,4 @@
-package hw2;
+package hw4;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -29,23 +29,6 @@ public class JPanelDraw extends JPanel
         Box box = new Box(e.getX(), e.getY());
         controller.addShape(box);
         controller.setFlag("");
-        repaint();
-    }
-    public void drawHelloworld(MouseEvent e)
-    {
-        Helloworld helloworld = new Helloworld(e.getX(), e.getY());
-        controller.addShape(helloworld);
-        controller.setFlag("");
-        repaint();
-    }
-    public void drawUndo()
-    {
-        controller.removeShape();
-        repaint();
-    }
-    public void drawRedo()
-    {
-        controller.addShapeRedo();
         repaint();
     }
 }

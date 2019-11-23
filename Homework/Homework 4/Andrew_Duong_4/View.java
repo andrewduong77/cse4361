@@ -1,4 +1,4 @@
-package hw2;
+package hw4;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,9 +23,6 @@ public class View extends JFrame
         // create a new buttons
         JButton buttonCircle = new JButton("Circle");
         JButton buttonBox = new JButton("Box");
-        JButton buttonHelloworld = new JButton("Helloworld");
-        JButton buttonUndo = new JButton("Undo");
-        JButton buttonRedo = new JButton("Redo");
 
         // create a panel to add buttons 
         JPanel panelLeft = new JPanel(); 
@@ -38,9 +35,6 @@ public class View extends JFrame
         // add buttons and textfield to panel 
         panelLeft.add(buttonCircle,BorderLayout.WEST); 
         panelLeft.add(buttonBox,BorderLayout.WEST);
-        panelLeft.add(buttonHelloworld,BorderLayout.WEST);
-        panelLeft.add(buttonUndo,BorderLayout.WEST);
-        panelLeft.add(buttonRedo,BorderLayout.WEST);
 
         // add panel to frame 
         frame.add(panelLeft,BorderLayout.WEST);
@@ -64,27 +58,6 @@ public class View extends JFrame
                 controller.setFlag("box");
             }
         });
-        buttonHelloworld.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                controller.setFlag("helloworld");
-            }
-        });
-        buttonUndo.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                panelRight.drawUndo();
-            }
-        });
-        buttonRedo.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                panelRight.drawRedo();
-            }
-        });
         panelRight.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
@@ -96,10 +69,6 @@ public class View extends JFrame
                 if(controller.getFlag().equals("box"))
                 {
                     panelRight.drawBox(e);
-                }
-                if(controller.getFlag().equals("helloworld"))
-                {
-                    panelRight.drawHelloworld(e);
                 }
                 repaint();
             }
