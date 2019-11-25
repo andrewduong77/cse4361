@@ -6,11 +6,16 @@ JC = javac
 
 CLASSES = \
 		Box.java \
+		BoxState.java \
 		Circle.java \
+		CircleState.java \
+		Context.java \
 		Controller.java \
 		Hw4.java \
 		JPanelDraw.java \
+		NoShapeState.java \
 		Shape.java \
+		State.java \
 		View.java
 
 default: classes

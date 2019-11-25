@@ -3,20 +3,14 @@ import java.util.Stack;
 public class Controller
 {
     private Stack<Shape> shapes;
-    private Stack<Shape> shapeRedoList;
-    private Shape temp;
-    private static String flag = "";
+    private Context context = new Context();
     public Controller()
     {
         shapes = new Stack<Shape>();
-        shapeRedoList = new Stack<Shape>();
     }
     public void addShape(Shape shape)
     {
         shapes.push(shape);
-        // empty shapeRedoList stack
-        while(!shapeRedoList.isEmpty())
-            shapeRedoList.pop();
     }
     public void getShape(int i)
     {
@@ -26,12 +20,8 @@ public class Controller
     {
          return shapes;
     }
-    public void setFlag(String newFlag)
+    public Context getContext()
     {
-        flag = newFlag;
-    }
-    public String getFlag()
-    {
-        return flag;
+        return context;
     }
 }

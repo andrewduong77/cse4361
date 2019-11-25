@@ -1,6 +1,6 @@
 import java.awt.Graphics2D;
 
-public class Box extends Shape
+public class Box implements Shape
 {
     private int x, y;
     public Box(int x, int y)

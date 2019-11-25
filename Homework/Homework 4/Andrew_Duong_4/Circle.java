@@ -1,6 +1,6 @@
 import java.awt.Graphics2D;
 
-public class Circle extends Shape
+public class Circle implements Shape
 {
     private int x, y;
     public Circle(int x, int y)

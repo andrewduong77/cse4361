@@ -22,7 +22,7 @@ public class JPanelDraw extends JPanel
         Circle circle = new Circle(e.getX(), e.getY());
         controller.addShape(circle);
         repaint();
-}
+    }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
