@@ -10,7 +10,8 @@ public class BoxState implements State
     {
         System.out.println("Controller is in Box State.");
         context.setState(this);
-    }public String toString()
+    }
+    public String toString()
     {
         return "Box State";
     }

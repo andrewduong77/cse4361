@@ -5,7 +5,7 @@ public class Context
     private State currentState;
     public Context()
     {
-        currentState = new NoShapeState();
+        currentState = null;
     }
     public void setState(State state)
     {
@@ -15,4 +15,8 @@ public class Context
     {
         return currentState;
     }
+//    public void clearState()
+//    {
+//        currentState = null;
+//    }
 }

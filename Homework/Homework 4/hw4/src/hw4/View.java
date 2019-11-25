@@ -48,27 +48,37 @@ public class View extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
-                controller.setFlag("circle");
+//                controller.setFlag("circle");
+                CircleState circleState = new CircleState();
+                circleState.doAction(controller.getContext());
             }
         });
         buttonBox.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                controller.setFlag("box");
+//                controller.setFlag("box");
+                BoxState boxState = new BoxState();
+                boxState.doAction(controller.getContext());
             }
         });
         panelRight.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
             {
-                if(controller.getFlag().equals("circle"))
+                if(controller.getContext().getState().toString().equals("Circle State"))
+//                if(controller.getFlag().equals("circle"))
                 {
                     panelRight.drawCircle(e);
+                    NoShapeState noShapeState = new NoShapeState();
+                    noShapeState.doAction(controller.getContext());
                 }
-                if(controller.getFlag().equals("box"))
+                if(controller.getContext().getState().toString().equals("Box State"))
+//                if(controller.getFlag().equals("box"))
                 {
                     panelRight.drawBox(e);
+                    NoShapeState noShapeState = new NoShapeState();
+                    noShapeState.doAction(controller.getContext());
                 }
                 repaint();
             }

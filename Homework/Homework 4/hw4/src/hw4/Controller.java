@@ -5,7 +5,8 @@ import java.util.Stack;
 public class Controller
 {
     private Stack<Shape> shapes;
-    private static String flag = "";
+    private Context context = new Context();
+//    private static String flag = "";
     public Controller()
     {
         shapes = new Stack<Shape>();
@@ -22,12 +23,16 @@ public class Controller
     {
          return shapes;
     }
-    public void setFlag(String newFlag)
+//    public void setFlag(String newFlag)
+//    {
+//        flag = newFlag;
+//    }
+//    public String getFlag()
+//    {
+//        return flag;
+//    }
+    public Context getContext()
     {
-        flag = newFlag;
-    }
-    public String getFlag()
-    {
-        return flag;
+        return context;
     }
 }
