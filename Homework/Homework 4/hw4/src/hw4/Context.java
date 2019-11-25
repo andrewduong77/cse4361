@@ -15,8 +15,4 @@ public class Context
     {
         return currentState;
     }
-//    public void clearState()
-//    {
-//        currentState = null;
-//    }
 }

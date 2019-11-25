@@ -21,20 +21,12 @@ public class JPanelDraw extends JPanel
     {
         Circle circle = new Circle(e.getX(), e.getY());
         controller.addShape(circle);
-//        controller.setFlag("");
-//        NoShapeState noShapeState = new NoShapeState();
-//        noShapeState.doAction(controller.getContext());
-//        controller.getContext().clearState();
         repaint();
 }
     public void drawBox(MouseEvent e)
     {
         Box box = new Box(e.getX(), e.getY());
         controller.addShape(box);
-//        controller.setFlag("");
-//        NoShapeState noShapeState = new NoShapeState();
-//        noShapeState.doAction(controller.getContext());
-//        controller.getContext().clearState();
         repaint();
     }
 }
