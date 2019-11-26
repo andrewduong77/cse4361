@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 
 public class View extends JFrame
 {
-    private Controller controller = new Controller();
-    public View(Controller controller)
+    private Context context = new Context();
+    public View()
     {
         // create a new frame to store text field and button 
         JFrame frame = new JFrame("HW1 GUI");
@@ -49,7 +49,7 @@ public class View extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 CircleState circleState = new CircleState();
-                circleState.doAction(controller.getContext());
+                circleState.doAction(context);
             }
         });
         buttonBox.addActionListener(new ActionListener()
@@ -57,24 +57,24 @@ public class View extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 BoxState boxState = new BoxState();
-                boxState.doAction(controller.getContext());
+                boxState.doAction(context);
             }
         });
         panelRight.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
             {
-                if(controller.getContext().getState().toString().equals("Circle State"))
+                if(context.getState().toString().equals("Circle State"))
                 {
                     panelRight.drawCircle(e);
                     NoShapeState noShapeState = new NoShapeState();
-                    noShapeState.doAction(controller.getContext());
+                    noShapeState.doAction(context);
                 }
-                if(controller.getContext().getState().toString().equals("Box State"))
+                if(context.getState().toString().equals("Box State"))
                 {
                     panelRight.drawBox(e);
                     NoShapeState noShapeState = new NoShapeState();
-                    noShapeState.doAction(controller.getContext());
+                    noShapeState.doAction(context);
                 }
                 repaint();
             }
