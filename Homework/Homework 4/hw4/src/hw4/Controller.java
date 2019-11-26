@@ -8,16 +8,17 @@ import java.util.Stack;
 
 public class Controller
 {
-    private Stack<Shape> shapes;
+//    private Stack<Shape> shapes = new Stack<Shape>();
     private Context context = new Context();
     private View view = new View();
     public Controller(View view)
     {
-        shapes = new Stack<Shape>();
+//        shapes = new Stack<Shape>();
         view.getButtonCircle().addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
+                System.out.println("In " + context.getState().toString());
                 CircleState circleState = new CircleState();
                 circleState.doAction(context);
             }
@@ -26,6 +27,7 @@ public class Controller
         {
             public void actionPerformed(ActionEvent e)
             {
+                System.out.println("In " + context.getState().toString());
                 BoxState boxState = new BoxState();
                 boxState.doAction(context);
             }
@@ -36,13 +38,14 @@ public class Controller
             {
                 if(context.getState().toString().equals("Circle State"))
                 {
-                    
+                    System.out.println("Drawing Circle");
                     drawCircle(e);
                     NoShapeState noShapeState = new NoShapeState();
                     noShapeState.doAction(context);
                 }
                 if(context.getState().toString().equals("Box State"))
                 {
+                    System.out.println("Drawing Box");
                     drawBox(e);
                     NoShapeState noShapeState = new NoShapeState();
                     noShapeState.doAction(context);
@@ -50,19 +53,19 @@ public class Controller
                 view.getPanelRight().repaint();
             }
         });
-        view.setShapes(shapes);
+//        view.setShapes(shapes);
     }
     public void addShape(Shape shape)
     {
-        shapes.push(shape);
+        view.getPanelRight().getShapes().push(shape);
     }
     public void getShape(int i)
     {
-        shapes.get(i);
+        view.getPanelRight().getShapes().get(i);
     }
     public Stack<Shape> getShapes()
     {
-         return shapes;
+         return view.getPanelRight().getShapes();
     }
     public Context getContext()
     {

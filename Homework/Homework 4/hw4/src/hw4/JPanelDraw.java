@@ -12,6 +12,10 @@ public class JPanelDraw extends JPanel
     private Stack<Shape> shapes;
 //    private View view = new View();
 //    private Controller controller = new Controller(view);
+    public JPanelDraw()
+    {
+        shapes = new Stack<Shape>();
+    }
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -36,8 +40,12 @@ public class JPanelDraw extends JPanel
 //    {
 //        return controller;
 //    }
-    public void setShapes(Stack<Shape> shapes)
+//    public void setShapes(Stack<Shape> shapes)
+//    {
+//        this.shapes = shapes;
+//    }
+    public Stack<Shape> getShapes()
     {
-        this.shapes = shapes;
+        return shapes;
     }
 }

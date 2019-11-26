@@ -15,10 +15,10 @@ import javax.swing.JPanel;
 public class View extends JFrame
 {
 //    private Controller controller = new Controller();
-    private Stack<Shape> shapes;
-    private JButton buttonCircle = new JButton();
-    private JButton buttonBox = new JButton();
-    private JPanelDraw panelRight = new JPanelDraw();
+//    private Stack<Shape> shapes = new Stack<Shape>();
+    private JButton buttonCircle;
+    private JButton buttonBox;
+    private JPanelDraw panelRight;
     public View()
     {
         // create a new frame to store text field and button 
@@ -36,7 +36,7 @@ public class View extends JFrame
 
         panelRight = new JPanelDraw();
         panelRight.setBackground(Color.white);
-        panelRight.setShapes(shapes);
+//        panelRight.setShapes(shapes);
 
         // add buttons and textfield to panel 
         panelLeft.add(buttonCircle,BorderLayout.WEST); 
@@ -98,8 +98,12 @@ public class View extends JFrame
     {
         return panelRight;
     }
-    public void setShapes(Stack<Shape> shapes)
-    {
-        this.shapes = shapes;
-    }
+//    public void setShapes(Stack<Shape> shapes)
+//    {
+//        this.shapes = shapes;
+//    }
+//    public Stack<Shape> getShapes()
+//    {
+//        return shapes;
+//    }
 }
