@@ -3,10 +3,11 @@ import java.util.Stack;
 public class Controller
 {
     private Stack<Shape> shapes;
-    private Context context = new Context();
+    private Context context;
     public Controller()
     {
         shapes = new Stack<Shape>();
+        context = new Context();
     }
     public void addShape(Shape shape)
     {
