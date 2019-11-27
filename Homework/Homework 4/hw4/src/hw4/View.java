@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 
 public class View extends JFrame
 {
-    private Context context = new Context();
+    private Context context;
     public View()
     {
+        context = new Context();
+        
         // create a new frame to store text field and button 
         JFrame frame = new JFrame("HW1 GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
