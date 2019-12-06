@@ -2,7 +2,7 @@ package hw2;
 
 import java.awt.Graphics2D;
 
-public class Helloworld extends Shape
+public class Helloworld implements Shape
 {
     private int x, y;
     public Helloworld(int x, int y)
